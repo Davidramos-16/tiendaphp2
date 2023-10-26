@@ -89,6 +89,21 @@ class database{
             die("Error al actualizar: " . $e->getMessage());
         }
     }
+
+    public function mostrarCompras($query)
+    {
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+
+            $resultados = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+
+            
+        } catch (PDOException $e) {
+            die("Error al consultar: " . $e->getMessage());
+        }
+    }
    
 
 }
