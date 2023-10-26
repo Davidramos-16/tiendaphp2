@@ -77,6 +77,18 @@ class database{
             die("Error en la consulta: " . $e->getMessage());
         }
     }
+
+    public function actualizarUsuario($query)
+    {
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+
+            
+        } catch (PDOException $e) {
+            die("Error al actualizar: " . $e->getMessage());
+        }
+    }
    
 
 }

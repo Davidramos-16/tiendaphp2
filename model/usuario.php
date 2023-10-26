@@ -1,5 +1,6 @@
 <?php
 
+require_once('../config/database.php');
 
 class usuarioController
 {
@@ -53,9 +54,21 @@ class usuarioController
        }
     }
 
-    public function actualizarUsuario()
+    public function actualizarUsuario($nombre,$apellido,$email,$pass,$imagen,$id)
     {
-        
+        try
+       {
+        $query = "update usuarios set nombre='$nombre',apellido='$apellido', email='$email',pass='$pass',imagen='$imagen' where id='$id'";
+        $usuarios = $this->base->login($query);
+
+        //$usuariosjson = json_encode($usuarios);
+       header("Location:".'../view/principal.html');
+       }
+       catch(PDOException $e)
+       {
+        die("Error al actualizar: " . $e->getMessage());
+       }
+
     }
 }
 
