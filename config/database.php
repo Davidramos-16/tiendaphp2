@@ -3,6 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Allow-Headers: application/json");
 define('host','database-1.cqbzkt2cy0bh.us-east-2.rds.amazonaws.com');
     define('username','root');
     define('password','gvUpmjzLlqpYAoW2ERfs');
