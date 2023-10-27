@@ -5,6 +5,7 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: application/json");
+header('Content-Type: application/json');
 require_once('../config/database.php');
 
 class usuarioController
@@ -27,19 +28,20 @@ class usuarioController
            
                 if(!($usuarios) == null)
                 {
-                    $usuariosjson = json_encode($usuarios);
-                    echo "Se ha autenticado correctamente";
-
+                    $usuariosjson = $usuarios;
                     $token = bin2hex(random_bytes(32));
-                    
-                    //header("Location:".'../view/principal.html');
-                   echo $usuariosjson.'<br>';
-                    echo $token;
+
+                    $respuesta = array(
+                        'token' => $token,
+                        'user' => $usuarios
+                    );
+
+                    echo json_encode($respuesta);
                 }
                 else
                 {
-                    header("Location:".'../view/login.html');
-                    echo "credenciales invalidas";
+                   
+                    return "credenciales invalidas";
                 }
             
         } catch (PDOException $e) {
@@ -55,7 +57,7 @@ class usuarioController
         $usuarios = $this->base->login($query);
 
         //$usuariosjson = json_encode($usuarios);
-       header("Location:".'../view/login.html');
+       
        }
        catch(PDOException $e)
        {
@@ -71,7 +73,7 @@ class usuarioController
         $usuarios = $this->base->login($query);
 
         //$usuariosjson = json_encode($usuarios);
-       header("Location:".'../view/principal.html');
+       
        }
        catch(PDOException $e)
        {
