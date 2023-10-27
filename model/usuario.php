@@ -29,8 +29,12 @@ class usuarioController
                 {
                     $usuariosjson = json_encode($usuarios);
                     echo "Se ha autenticado correctamente";
+
+                    $token = bin2hex(random_bytes(32));
+                    
                     //header("Location:".'../view/principal.html');
-                    echo $usuariosjson;
+                   echo $usuariosjson.'<br>';
+                    echo $token;
                 }
                 else
                 {
