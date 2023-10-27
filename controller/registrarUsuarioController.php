@@ -13,10 +13,11 @@ if($_POST)
     $apellido = $_POST['apellido'];
     $correo = $_POST['correo'];
     $pass  = $_POST['pass'];
+    $direccion = $_POST['direccion'];
 
     $insert = new usuarioController();
 
-    $insert ->registrarUsuario($nombre,$apellido,$correo,$pass);
+    $insert ->registrarUsuario($nombre,$apellido,$correo,$pass,$direccion);
 }
 
 

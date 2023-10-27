@@ -47,11 +47,11 @@ class usuarioController
         }
     }
 
-    public function registrarUsuario($nombre,$apellido,$email,$pass)
+    public function registrarUsuario($nombre,$apellido,$email,$pass,$direccion)
     {
        try
        {
-        $query = "INSERT INTO usuarios(nombre,apellido,email,pass) values('$nombre','$apellido','$email','$pass')";
+        $query = "INSERT INTO usuarios(nombre,apellido,email,pass,direccion) values('$nombre','$apellido','$email','$pass','$direccion')";
         $usuarios = $this->base->login($query);
 
         //$usuariosjson = json_encode($usuarios);
@@ -63,11 +63,11 @@ class usuarioController
        }
     }
 
-    public function actualizarUsuario($nombre,$apellido,$email,$pass,$imagen,$id)
+    public function actualizarUsuario($nombre,$apellido,$email,$pass,$imagen,$id,$direccion)
     {
         try
        {
-        $query = "update usuarios set nombre='$nombre',apellido='$apellido', email='$email',pass='$pass',imagen='$imagen' where id='$id'";
+        $query = "update usuarios set nombre='$nombre',apellido='$apellido', email='$email',pass='$pass',imagen='$imagen',direccion='$direccion' where id='$id'";
         $usuarios = $this->base->login($query);
 
         //$usuariosjson = json_encode($usuarios);

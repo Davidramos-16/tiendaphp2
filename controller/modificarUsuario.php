@@ -13,11 +13,12 @@ require_once('../model/usuario.php');
     $email= $_POST['correo'];
     $pass = $_POST['pass'];
     $imagen = $_POST['imagen'];
+    $direccion = $_POST['direccion'];
     $id = 1;
 
     $user = new usuarioController();
 
-    $user->actualizarUsuario($nombre,$apellido,$email,$pass,$imagen,$id);
+    $user->actualizarUsuario($nombre,$apellido,$email,$pass,$imagen,$id,$direccion);
 
 
 ?>
