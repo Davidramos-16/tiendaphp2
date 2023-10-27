@@ -31,17 +31,18 @@ class usuarioController
                     $usuariosjson = $usuarios;
                     $token = bin2hex(random_bytes(32));
 
-                    $respuesta = array(
-                        'token' => $token,
-                        'user' => $usuarios
+                    $response = array(
+                        "token" => $token,
+                        "user" => $usuarios
+                        
                     );
-
-                    echo json_encode($respuesta);
+                
+                    echo json_encode($response);
                 }
                 else
                 {
                    
-                    return "credenciales invalidas";
+                    echo json_encode("credenciales invalidas");
                 }
             
         } catch (PDOException $e) {
