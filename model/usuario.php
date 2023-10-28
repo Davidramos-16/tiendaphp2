@@ -19,27 +19,30 @@ class usuarioController
 
     ///verificamos credenciales
     public function verificarUsuario($correo,$pass) {
+        
         try {
             $query = "SELECT * FROM usuarios where email='$correo' and pass='$pass'";
             $usuarios = $this->base->login($query);
-                if($usuarios)
+
+            
+           
+                if(!($usuarios) == null)
                 {
                     $usuariosjson = $usuarios;
                     $token = bin2hex(random_bytes(32));
-                    $response = [
+
+                    $response = array(
                         "token" => $token,
-                        "user" => $usuarios,
-                    ];
-                    header('Content-Type: application/json');
+                        "user" => $usuarios
+                        
+                    );
+                
                     echo json_encode($response);
                 }
                 else
                 {
-                    $errorResponse = [
-                        'error' => 'Invalid credentials',
-                    ];
-                    header('Content-Type: application/json');          
-                    echo json_encode($errorResponse);
+                   
+                    echo json_encode("credenciales invalidas");
                 }
             
         } catch (PDOException $e) {
