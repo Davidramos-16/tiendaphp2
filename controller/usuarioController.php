@@ -7,15 +7,14 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: application/json");
   
-if (isset($_POST['email']) && isset($_POST['pass'])) {
-      $usuario = new usuarioController();
-      $correo = $_POST['email'];
-      $pass = $_POST['pass'];
-      $usuario->verificarUsuario($correo,$pass);
+$data = json_decode(file_get_contents("php://input"));
 
-   }
-   else
-   {
-      echo json_encode("No se ha enviado una solicitud POST");
-   }
+if ($data && isset($data->email) && isset($data->pass)) {
+    $usuario = new usuarioController();
+    $correo = $data->email;
+    $pass = $data->pass;
+    $usuario->verificarUsuario($correo, $pass);
+} else {
+    echo json_encode("No se han enviado datos válidos en la solicitud POST");
+}
 ?>

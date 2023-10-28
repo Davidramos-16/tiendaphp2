@@ -4,16 +4,17 @@ header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Access-Control-Allow-Credentials: true");
 header("Access-Control-Allow-Headers: application/json");
-require_once('../controller/usuarioController.php');
 require_once('../model/usuario.php');
 
-if($_POST)
+$data = json_decode(file_get_contents("php://input"));
+
+if ($data && isset($data->nombre) && isset($data->apellido)&& isset($data->email)&& isset($data->pass)&& isset($data->direccion))
 {
-    $nombre= $_POST['nombre'];
-    $apellido = $_POST['apellido'];
-    $correo = $_POST['correo'];
-    $pass  = $_POST['pass'];
-    $direccion = $_POST['direccion'];
+    $nombre= $data->nombre;
+    $apellido = $data->apellido;
+    $correo = $data->email;
+    $pass  = $data->pass;
+    $direccion = $data->direccion;
 
     $insert = new usuarioController();
 

@@ -55,9 +55,10 @@ class usuarioController
        try
        {
         $query = "INSERT INTO usuarios(nombre,apellido,email,pass,direccion) values('$nombre','$apellido','$email','$pass','$direccion')";
-        $usuarios = $this->base->login($query);
+        $usuarios = $this->base->registrarUsuario($query);
 
-        //$usuariosjson = json_encode($usuarios);
+        
+        echo json_encode("datos insertados");
        
        }
        catch(PDOException $e)
