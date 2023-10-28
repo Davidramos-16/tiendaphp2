@@ -36,6 +36,27 @@ class compras
             die("Error en la consulta: " . $e->getMessage());
         }
     }
+
+    public function saveCompras($producto,$usuario,$cantidad)
+    {
+
+        try {
+            $query = "INSERT INTO compras(idProducto,idUsuario,cantidad) values('$producto','$usuario','$cantidad')";
+            $compras = $this->base->saveCompras($query);
+
+            $comprasjson = json_encode($compras);
+           
+            echo $comprasjson;
+           
+                /*foreach($productos  AS $producto)
+                {
+                    echo 'NOMBRE:'.$producto['nombre'].' DESCRIPCION:'.$producto['descripcion'].' PRECIO:$'.$producto['precio'].'<br>';
+                }*/
+            
+        } catch (PDOException $e) {
+            die("Error en la consulta: " . $e->getMessage());
+        }
+    }
 }
 
 ?>

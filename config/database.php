@@ -108,6 +108,20 @@ class database{
             die("Error al consultar: " . $e->getMessage());
         }
     }
+
+    public function saveCompras($query)
+    {
+        try {
+            $statement = $this->pdo->prepare($query);
+            $statement->execute();
+
+            
+        } catch (PDOException $e) {
+            die("Error al insertar: " . $e->getMessage());
+        }
+    }
+
+    
    
 
 }

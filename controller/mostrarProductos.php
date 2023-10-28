@@ -10,4 +10,7 @@ $mostrar = new producto();
 
 $mostrar->getProductos();
 
+
+
+
 ?>
