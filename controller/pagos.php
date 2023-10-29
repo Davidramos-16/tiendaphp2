@@ -1,11 +1,12 @@
 <?php
 require '../vendor/autoload.php';
+require '../keys/key.php';
 
 use Stripe\Stripe;
 use Stripe\Checkout\Session;
 
 // Reemplaza con tus claves de API de Stripe
-Stripe::setApiKey('sk_test_51HfVBhHeZ8a6bHaCizPDE6eZxE0zNftnGU9pD4gOgOJu3QWHb7lSvQ7OthFgOE2zaPfctI8Gh4RsP7cSZ3sQDQzA00rxYBr1s9');
+Stripe::setApiKey($key);
 header('Content-Type: application/json');
 // Configura las opciones de envío
 $shippingOptions = [
